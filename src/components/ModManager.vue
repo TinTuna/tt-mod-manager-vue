@@ -72,6 +72,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "@vue/composition-api";
+import axios from "axios";
 
 export default defineComponent({
   setup() {
@@ -104,6 +105,8 @@ export default defineComponent({
     const ships = ref([]);
 
     onMounted(async () => {
+      const { data } = await axios.get("/ships/ship.json");
+      debugger;
       ships.value.push(
         {
           base: true,
@@ -124,7 +127,7 @@ export default defineComponent({
       weightRules,
       search,
       ships,
-      headers
+      headers,
     };
   },
 });
